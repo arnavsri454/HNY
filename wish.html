@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Year ✨</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #fdf6ff 0%, #f3f7ff 100%);
+      color: #3a2f4f;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Soft pastel orbs */
+    .orb {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .5;
+      animation: drift 20s ease-in-out infinite alternate;
+    }
+
+    .orb.pink { background: #ffd1e8; top: 8%; left: -80px; }
+    .orb.peach { background: #ffe7c7; bottom: 6%; right: -90px; animation-delay: 6s; }
+
+    @keyframes drift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-50px); }
+    }
+
+    .card {
+      position: relative;
+      max-width: 460px;
+      width: 90%;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(18px);
+      border-radius: 30px;
+      padding: 42px 32px 36px;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(180,150,220,0.35);
+      z-index: 1;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e7b6d6, transparent);
+      margin: 18px auto 26px;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .year {
+      font-size: .85rem;
+      opacity: .7;
+      letter-spacing: 3px;
+    }
+
+    .msg {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #4b3f63;
+      animation: fadeUp 1.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .highlight { color: #e47aa8; font-weight: 500; }
+
+    .typing {
+      margin-top: 14px;
+      font-style: italic;
+      min-height: 1.5em;
+      color: #6a4c7c;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-size: .85rem;
+      letter-spacing: 1px;
+      opacity: .7;
+    }
+
+    /* Soft closing glow */
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 32px;
+      background: radial-gradient(circle at center, rgba(255,210,235,0.45), rgba(220,235,255,0.35), transparent 78%);
+      opacity: .3;
+      pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.85rem; }
+      .msg { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb pink"></div>
+  <div class="orb peach"></div>
+
+  <div class="card">
+    <h1>Midnight</h1>
+    <div class="year">01 · 01 · 2026</div>
+    <div class="divider"></div>
+
+    <div class="msg">
+      You step into a new year.
+      <br/><br/>
+      You carry warmth in quiet ways —
+      in how you notice things,
+      in how you stay gentle even when the world isn’t.
+      <br/><br/>
+      You deserve mornings that feel lighter,
+      evenings that feel understood,
+      and moments where you smile without trying.
+      <br/><br/>
+      And if somewhere along the way,
+      you find me walking beside you,
+      not ahead, not behind —
+      <span class="highlight">just there</span>,
+      then this year would already feel a little special.
+    </div>
+
+    <div class="typing" id="typing"></div>
+
+    <div class="signature">— A soft beginning</div>
+  </div>
+
+  <script>
+    const text = "If this year brings you closer to yourself — I’ll quietly be glad I was here to see it.";
+    const el = document.getElementById('typing');
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 70);
+      }
+    }
+
+    setTimeout(type, 1200);
+  </script>
+</body>
+</html>
